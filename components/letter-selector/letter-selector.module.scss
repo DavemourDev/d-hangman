@@ -1,0 +1,41 @@
+@keyframes clickedLetter {
+    0% {
+        transform: scale(1);
+        border: 1px solid rgba(150, 255, 150, 0.0);
+    }
+    60% {
+        transform: scale(1.75);
+        border: 1px solid rgba(150, 200, 150, 1.0);
+    }
+    100% {
+        transform: scale(1);
+        border: 1px solid rgba(150, 150, 150, 0.0);
+    }
+}
+
+.letterSelector {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .letter {
+        font-size: 2rem;
+        border: 1px solid rgba(0, 0, 0, 0);
+        background: none;
+        transition: ease 0.4s all;
+        text-shadow: 1px 1px 1px rgba(50, 50, 50, 0.25);
+
+        &:not([disabled]):hover {
+            cursor: pointer;
+            transform: scale(1.25);
+            color: green;
+            text-shadow: 1px 1px 1px rgba(50, 50, 50, 0.6);
+        }
+
+        &:disabled {
+            animation: clickedLetter 1s;
+        }
+    }
+}
