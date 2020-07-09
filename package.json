@@ -9,7 +9,7 @@
     "heroku-postbuild": "npm run build"
   },
   "engines" : { 
-    "node" : ">=13.*" 
+    "node" : "^13.*" 
   }, 
   "dependencies": {
     "next": "9.3.5",
