@@ -4,8 +4,7 @@ import Layout from '../../components/layout';
 import styles from '../../components/pages-css/play-page.module.scss'; 
 
 import {useState} from 'react';
-
-import fetch from 'node-fetch';
+import data from '../../data/words';
 
 import Game from '../../components/game';
 
@@ -76,11 +75,20 @@ const PlayPage = ({words}) => {
   )
 };
 
+/*
 export const getWords = async () => {
   // const API_URL = 'http://localhost:3000/api/'; // dev
   const API_URL = 'https://d-hangman.herokuapp.com/api/'; // prod
   const data = await fetch(API_URL + 'words');
   return data.json();
+}
+*/
+
+/**
+ * PROVISIONAL: los datos son obtenidos de un fichero
+ */
+export const getWords = async () => { 
+  return data;
 };
 
 export const getStaticProps = async () => {

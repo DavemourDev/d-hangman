@@ -29,7 +29,7 @@ const HomePage = () => {
       
       </main>
 
-      <footer>Copyright davemour@2020</footer>
+      <footer>Copyright davemour&copy;2020</footer>
     </div>
   )
 }
