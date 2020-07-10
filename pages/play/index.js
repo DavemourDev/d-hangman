@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Layout from '../../components/layout';
 
-import styles from './play-page.module.scss'; 
+import styles from '../../components/pages-css/play-page.module.scss'; 
 
 import {useState} from 'react';
 
