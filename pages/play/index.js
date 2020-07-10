@@ -77,12 +77,9 @@ const PlayPage = ({words}) => {
 };
 
 export const getWords = async () => {
-  const data = await fetch('http://localhost:3000/api/words');
-  return data.json();
-};
-
-export const getRandomWord = async () => {
-  const data = await fetch('http://localhost:3000/api/random-word');
+  // const API_URL = 'http://localhost:3000/api/'; // dev
+  const API_URL = 'https://d-hangman.herokuapp.com/api/'; // prod
+  const data = await fetch(API_URL + 'words');
   return data.json();
 };
 
