@@ -49,6 +49,9 @@ const PlayPage = ({words}) => {
     setScore(score + gainedScore);
   }
 
+/*
+*/
+
   /**
    * Se llama al perder una partida
    */
@@ -58,10 +61,16 @@ const PlayPage = ({words}) => {
     <Layout>
       <Head>
         <title>Hangman - Modo clásico</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       </Head>
-      <h1>Hangman</h1>
-      <h2>Modo clásico</h2>
-      <p><strong>Puntuación:</strong> { score }</p>
+      
+      <header className={styles.header}>
+        <hgroup>
+          <h1>Hangman</h1>
+          <h2>Modo clásico</h2>
+        </hgroup>
+        <p><strong>Puntuación:</strong> { score }</p>
+      </header>
       <p className={styles.hint}>{ hint }</p>
       <Game 
           solution={ gameSolution } 

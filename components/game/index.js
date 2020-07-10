@@ -62,9 +62,26 @@ const Game = ({
         }
     }, [isSolved])
 
+    
+
     return (
-        <>
-            <LetterSelector onPickLetter={ playLetter } disabledLetters={ usedLetters }/>
+        <div className={styles.game} >
+            { (!isSolved && lives > 0) ? (
+                <LetterSelector onPickLetter={ playLetter } disabledLetters={ usedLetters }/>
+            ) : (
+                <div className={ styles.endPanel + ' ' + (isSolved ? styles.win : ( (lives <= 0) ? styles.lose : ''))}>
+                    { isSolved ? <>
+                        <p>¡Enhorabuena! ¡Has resuelto la palabra oculta!</p>
+                        <button onClick={() => setSolution(onNextWord())}>Siguiente palabra</button>
+                    </> : null }
+                    { lives <= 0 ? <>
+                        <p>Has perdido... La palabra oculta era <strong>{ solution }</strong></p> 
+                        <Link href='/'>
+                            <button>Volver a la pantalla de título</button>
+                        </Link>
+                    </>: null }
+                </div>
+            )}
             <div className={styles.wordPanel}>
                 { word.split('').map((letter, index) => (
                     <div className={styles.letter + (letter !== '*' ? ` ${styles.inWord}` : '')} key={index}>
@@ -77,19 +94,8 @@ const Game = ({
                     { range(1, _initialLives).map(i => <Heart key={i} on={ i <= lives } />)}
                 </div>
             </div>
-            <div className={ styles.endPanel + ' ' + (isSolved ? styles.win : ( (lives <= 0) ? styles.lose : ''))}>
-                { isSolved ? <>
-                    <p>¡Enhorabuena! ¡Has resuelto la palabra oculta!</p>
-                    <button onClick={() => setSolution(onNextWord())}>Siguiente palabra</button>
-                </> : null }
-                { lives <= 0 ? <>
-                    <p>Has perdido... La palabra oculta era <strong>{ solution }</strong></p> 
-                    <Link href='/'>
-                        <button>Volver a la pantalla de título</button>
-                    </Link>
-                </>: null }
-            </div>
-        </>
+            
+        </div>
     );
 
 };

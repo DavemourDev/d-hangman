@@ -1,7 +1,11 @@
+// Aquí van las constantes usadas por los helpers
+const TILDE =    "ãàáäâèéëêìíïîòóöôùúüû";
+const NO_TILDE = "aaaaaeeeeiiiioooouuuu";
+
 /**
- * Devuelve una lista con todos los números comprendidos entre los dos números dados, incluyéndolos.
- * @param {} initial 
- * @param {*} end 
+ * Devuelve una lista con todos los números comprendidos entre los dos números enteros dados, incluyéndolos.
+ * @param {number} initial 
+ * @param {number} end 
  */
 export function range(initial, end) {
     let rng = [];
@@ -13,24 +17,19 @@ export function range(initial, end) {
 
 /**
  * Dada una lista, devuelve un elemento aleatorio.
- * @param {} list 
+ * @param {array} list 
  */
 export function randomElement(list) {
     return list[Math.floor(Math.random() * list.length)];
 }
 
 /**
- * Devuelve una cadena eliminando todas sus tildes.
- * @param {} str 
+ * Devuelve una cadena eliminando todas las tildes en sus vocales.
+ * @param {string} str 
  */
 export function untilded(str) {
-    const TILDE =    "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüû";
-    const NO_TILDE = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuu";
     return str.split('').map(char => {
         const tildedIndex = TILDE.indexOf(char);
-        if (tildedIndex > -1) {
-            return NO_TILDE[tildedIndex];
-        }
-        return char;
+        return (tildedIndex > -1) ? NO_TILDE[tildedIndex] : char;
     }).join('');
 }
