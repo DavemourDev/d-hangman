@@ -24,5 +24,13 @@ export function randomElement(list) {
  * @param {} str 
  */
 export function untilded(str) {
-    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    const TILDE =    "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüû";
+    const NO_TILDE = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuu";
+    return str.split('').map(char => {
+        const tildedIndex = TILDE.indexOf(char);
+        if (tildedIndex > -1) {
+            return NO_TILDE[tildedIndex];
+        }
+        return char;
+    }).join('');
 }
