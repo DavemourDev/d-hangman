@@ -1,3 +1,12 @@
+@keyframes showHint {
+    from {
+        transform: scaleY(0);
+    } 
+    to {
+        transform: scaleY(1);
+    }
+}
+
 .header {
 
     @media screen and (max-width: 482px) {
@@ -13,16 +22,13 @@
             padding: 0;
             font-size: 1rem;
         }
-    }
-
-    
+    }    
 }
 
 .hint {
-    border: 3px ridge #333;
-    background-color: #ccc;
+    background-color: #ddf;
     padding: 0.5rem;
     line-height: 1.5rem;
     text-align: center;
-    font-size: 1.5rem;
+    animation: showHint 0.4s;
 }

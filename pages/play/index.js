@@ -3,33 +3,65 @@ import Layout from '../../components/layout';
 
 import styles from '../../components/pages-css/play-page.module.scss'; 
 
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import data from '../../data/words';
 
 import Game from '../../components/game';
+import Timer from '../../components/timer';
 
 import { randomElement } from '../../helpers';
 
 const PlayPage = ({words}) => {
   
+  const PERIOD = 100;
+  
   // Obtener una palabra aleatoria
   const { word: _word, definitions: _definitions } = randomElement(words);
-  
+
+  /**
+   * Tiempo de partida
+   */
+  const [ time, setTime ] = useState(0);
+
   /**
    * Palabra solución de la partida
    */
   const [ gameSolution, setGameSolution ] = useState(_word);
+
+  /**
+   * Puntuación de la partida
+   */
   const [ score, setScore ] = useState(0);
+
+  /**
+   * Pista dada al jugador para que adivine la palabra oculta.
+   */
   const [ hint, setHint ] = useState(randomElement(_definitions));
   
+  const [ timeActivated, setTimeActivated ] = useState(true);
+
+  /**
+   * Paso del tiempo del temporizador.
+   */
+  const tickHandler = (period) => {
+    setTime(time + period);
+  };
+
+
+  useEffect(() => {
+      // TIME EVENTS HERE
+    // console.log(time);
+  }, [time])
+
+
   /**
    * Se llama al escoger rejugar partida.
    */
   const replayHandler = () => {
     const { word, definitions } = randomElement(words);
-    console.log(`new solution is ${word}`)
     setGameSolution(word);
     setHint(randomElement(definitions));
+    setTime(0);
     return word;
   };
 
@@ -49,8 +81,6 @@ const PlayPage = ({words}) => {
     setScore(score + gainedScore);
   }
 
-/*
-*/
 
   /**
    * Se llama al perder una partida
@@ -69,7 +99,11 @@ const PlayPage = ({words}) => {
           <h1>Hangman</h1>
           <h2>Modo clásico</h2>
         </hgroup>
-        <p><strong>Puntuación:</strong> { score }</p>
+        <div>
+          <p><strong>Puntuación:</strong> { score }</p>
+        
+        </div>
+
       </header>
       <p className={styles.hint}>{ hint }</p>
       <Game 
@@ -79,6 +113,12 @@ const PlayPage = ({words}) => {
           onLose={ loseHandler }
           onReplay={ nextWordHandler } 
           onNextWord={ replayHandler }
+      />
+
+      <Timer
+        period={ PERIOD } 
+        onTick={ tickHandler }
+        activated={ timeActivated }
       />
     </Layout>
   )

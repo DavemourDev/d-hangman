@@ -1,0 +1,75 @@
+
+@keyframes letterInWord {
+    0% {
+        background-color: rgba(180, 180, 180, 1);
+    }
+    25%  {
+        transform: scale(1.2) rotateY(0);
+        background-color: rgba(120, 240, 120, 0.5);
+    }
+    50%  {
+        transform: scale(1.7) rotateY(180deg);
+        background-color: rgba(120, 240, 120, 0);
+    }
+    100% {
+        transform: scale(1) rotateY(360deg);
+        background-color: rgba(120, 240, 120, 1);
+       
+    }
+}
+
+@keyframes lettersAppear {
+    0% {
+        transform: scaleX(0) scaleY(0);
+        background-color: rgba(180, 180, 180, 0);
+    }
+    50% {
+        transform: scaleX(0.1) scaleY(1);
+        background-color: rgba(180, 180, 180, 0.75);
+    }
+    75% {
+        transform: scaleX(1.4) scaleY(1.4);
+    }
+    100% {
+        transform: scaleX(1) scaleY(1);
+        background-color: rgba(180, 180, 180, 1);
+    }
+}
+
+
+.wordPanel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 3px ridge #444;
+
+    .letter {
+        border: 3px ridge #444;
+        font-variant: small-caps;
+        margin: 0.25rem;
+        font-size: 1.5rem;
+        width: 1.5em;
+        height: 1.5em;
+        border-collapse: collapse;
+        background-color: rgba(180, 180, 180, 1);;
+        
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        
+        animation: lettersAppear 0.4s 0.25s;
+
+        &.inWord {
+            animation: letterInWord 0.4s;
+            background-color: rgba(120, 240, 120, 1);
+        }
+
+        @media screen and (max-width: 482px) {
+            margin: 0.25rem 0;
+            width: 1.5em;
+            height: 1.5em
+        }
+
+    }
+}

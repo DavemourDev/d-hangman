@@ -932,6 +932,510 @@ export default {
 
 
         },
+        {
+            word: 'caro',
+            definitions: [
+                'Que tiene un precio alto o más alto de lo normal.',
+                'Un lugar que requiere grandes gastos, o más altos de lo normal, para vivir en él.',
+                'Que supone u ocasiona dificultad o sufrimiento, o que puede tener contrapartidas.',
+                'Adverbio que denota: A un precio alto.',
+            ],
+            word: 'cara',
+            definitions: [
+                'Parte anterior de la cabeza humana, desde el principio de la frente hasta la punta de la barbilla.',
+                'Parte anterior de la cabeza de algunos animales.',
+                'Semblante.',
+                'Fachada o parte frontal de algo.',
+                'Superficie de algo.',
+                'Superficie de un lado de una figura geométrica.',
+                'Se dice que si es larga, expresa tristeza o contrariedad.',
+                'Si es de póker, es inescrutable.',
+                'Plantársela a alguien es desafiante.'
+            ],
+        },
+        {
+            word: 'líquido',
+            definitions: [
+                'Dicho de un cuerpo de volumen constante: Aquel que se adapta a la forma del recipiente o cavidad que lo contiene.',
+                'Dicho de un saldo o de un residuo: De cuantía cierta que resulta de la comparación del cargo con la data.'
+            ]
+        },
+        {
+            word: 'líquida',
+            definitions: [
+                'Dicho de una consonante: Aquella que por sus especiales características articulatorias puede formar inicio silábico agrupada a la consonante que la precede.',
+            ]
+        },
+        {
+            word: 'paladar',
+            definitions: [
+                'Parte interior y superior de la boca de un animal vertebrado.',
+                'Gusto y sabor que se percibe en los manjares.',
+                'Gusto, sensibilidad para discernir, aficionarse o repugnar algo en lo material o espiritual.'
+            ]
+        },
+        {
+            word: 'gusto',
+            definitions: [
+                'Sentido corporal con el que se perciben sustancias químicas disueltas, como las de los alimentos.',
+                'Sabor que tienen las cosas.',
+                'Placer o deleite que se experimenta con algún motivo, o se recibe de cualquier cosa.',
+                'Propia voluntad, determinación o arbitrio.',
+                'Facultad de sentir o apreciar lo bello o feo.',
+                'Cualidad, forma o manera que hace bello o feo algo.',
+                'Manera de apreciar las cosas cada persona.',
+                'Capricho, antojo, diversión.',
+                'Afición o inclinación por algo.',
+                'Manera de sentirse o ejecutarse la obra artística o literaria en un país o tiempo determinado.'
+            ]
+        },
+        {
+            word: 'padre',
+            definitions: [
+                'Varón que ha engendrado uno o más hijos.',
+                'Varón en relación con sus hijos.',
+                'Animal macho que ha engendrado una o más crías.',
+                'Macho en el ganado destinado a la procreación.',
+                'Cabeza de una descendencia, familia o pueblo.',
+                'Sacerdote perteneciente a una orden religiosa.',
+                'Origen, principio.',
+                'Autor o creador de algo.',
+                'En el cristianismo, primera persona de la Santísima Trinidad.',
+                'Muy grande.'
+            ]
+        },
+        {
+            word: 'miope',
+            definitions: [
+                'Dicho de una persona o de un ojo: Afecto de miopía.',
+                'Corto de alcances o de miras.'
+            ]
+        },
+        {
+            word: 'afecto',
+            definitions: [
+                'Inclinado a alguien o algo.',
+                'Que sufre o puede sufrir alteración morbosa.',
+                'Cada una de las pasiones del ánimo, como la ira, el amor, el odio, etc., y especialmente el amor o el cariño.'
+            ]
+        },
+        {
+            word: 'afecta',
+            definitions: [
+                'Dicho de una posesión o una renta: Sujeta a alguna carga u obligación.',
+                'Dicho de una persona: Destinada a ejercer funciones o a prestar sus servicios en determinada dependencia.'
+            ]
+        },
+        {
+            word: 'ciruela',
+            definitions: [
+                'Fruto del ciruelo.',
+                'Drupa, muy variable en forma, color y tamaño según la variedad del árbol que la produce.'
+            ]
+        },
+        {
+            word: 'eje',
+            definitions: [
+                'Barra, varilla o pieza similar que atraviesa un cuerpo giratorio y le sirve de sostén en el movimiento.',
+                'Idea fundamental en un raciocinio.',
+                'Tema predominante en un escrito o discurso.',
+                'Sostñen principal de una empresa.',
+                'Designio final de una conducta.',
+                'Persona o cosa considerada como el centro de algo, y en torno a la cual gira lo demás.',
+                'Barra horizontal dispuesta perpendicularmente a la línea de tracción de un vehículo, que soporta en sus extremos los bujes de las ruedas.',
+                'Línea que divide por la mitad el ancho de una calle o camino, u otra cosa semejante.',
+                'Diámetro principal de una curva.',
+                'Pieza mecánica sometida a rotación en una máquina.',
+            ]
+        },
+        {
+            word: 'esposa',
+            definitions: [
+                'Mujer casada con relación a su cónyuge.',
+                'En plural, pareja de manillas unidas entre sí con las que se aprisonan las muñecas de alguien.'
+            ]
+        },
+        {
+            word: 'armario',
+            definitions: [
+                'Mueble con puertas y estantes o perchas para guardar ropa y otros objetos.'
+            ]
+        },
+        {
+            word: 'fecha',
+            definitions: [
+                'Indicación del tiempo, y a veces del lugar, en que se hace o sucede algo, especialmente al inicio o al final de un escrito.',
+                'Tiempo en que se hace o sucede algo.',
+                'Día completo o día determinado.',
+                'Tiempo o momento actuales.',
+                'En aposición tras un sustantivo que designa el plazo para el cumplimiento o vencimiento de algo.'
+            ]
+        },
+        {
+            word: 'montaña',
+            definitions: [
+                'Gran elevación natural del terreno.',
+                'Territorio cubierto y erizado de montes.',
+                'Gran acumulación de algo.',
+                'Dificultad o problema de muy difícil resulución.',
+                'Si es rusa, es una atracción de feria.'
+            ]
+        },
+        {
+            word: 'gemir',
+            definitions: [
+                'Dicho de una persona: Emitir sonidos que expresan dolor, pena o placer.',
+                'Dicho de un animal o cosa: Producir sonidos similares a los que emite una persona cuando gime.'
+            ]
+        },
+        {
+            word: 'ánimo',
+            definitions: [
+                'Actitud, disposición, temple.',
+                'Valor, energía, esfuerzo.',
+                'Intención, voluntad.',
+                'Carácter, índole, condición psíquica.',
+                'Alma o espíritu, en cuanto principio de la actividad humana.',
+                'Interjección utilizada para alentar o esforzar a alguien.'
+            ]
+        },
+        {
+            word: 'programa',
+            definitions: [
+                'Edicto, bando o aviso público.',
+                'Previa declaración de lo que se piensa hacer en alguna materia u ocasión.',
+                'Tema que se da para un discurso, diseño, cuadro, etc.',
+                'Sistema y distribución de las materias de un curso o asignatura, que forman y publican los profesores encargados de explicarlas.',
+                'Anuncio o exposición de las partes de que se han de componer ciertos actos o espectáculos, o de las condiciones a que han de sujetarse, reparto, etc.',
+                'Impreso que contiene el programa de un acto o espectáculo.',
+                'Proyecto ordenado de actividades.',
+                'Serie ordenada de operaciones necesarias para llevar a cabo un proyecto.',
+                'Cada una de las distintas unidades temáticas que constituyen una emisión de radio o televisión.',
+                'Cada una de las operaciones que, en un orden determinado, ejecuta una máquina.'
+            ]
+        },
+        {
+            word: 'espectáculo',
+            definitions: [
+                'Función o diversión pública celebrada en un teatro, en un circo o en cualquier otro edificio o lugar en que se congrega la gente para presenciarla.',
+                'Conjunto de actividades relacionadas con los espectáculos.',
+                'Cosa que se ofrece a la vista o la contemplación intelectual y es capaz de atraer la atención y mover el ánimo.',
+                'Acción que causa escándalo o gran extrañeza.',
+                
+            ]
+        },
+        {
+            word: 'vista',
+            definitions: [
+                'Sentido corporal con que los ojos perciben algo mediante la acción de la luz.',
+                'Conjunto de los órganos de la visión.',
+                'Visión.',
+                'Aspecto o disposición de las cosas que se ven.',
+                'Panorama que se ofrece al espectador desde un punto.',
+                'Representación pictórica o fotográfica de un lugar o monumento.',
+                'Conocimiento claro de las cosas.',
+                'Intento o propósito.',
+                'Mirada superficial o ligera.',
+                'Sagacidad para descubrir algo que otros no ven.',
+                'Comparecencia ante un juez o tribunal en la que las partes exponen los fundamentos de sus respectivas pretensiones.',
+                'En plural, regalos que recíprocamente se hacen los novios.',
+                'En plural, ventana, puerta o otra abertura en los edicios por donde entra luz para ver o se puede observar lo exterior.',
+                'Empleado de aduanas a cuyo cargo estña el control de las mercancías.'
+            ]
+        },
+        {
+            word: 'pasar',
+            definitions: [
+                'Llevar, conducir de un lugar a otro.',
+                'Mudar, trasladar a otro lugar, situación o clase.',
+                'Cruzar de una parte a otra.',
+                'Enviar, trasmitir.',
+                'Ir más allá de un punto limitado o determinado.',
+                'Penetrar o traspasar.',
+                'Introducir o extraer fraudulentamente géneros prohibidos o que adeudan derechos.',
+                'Exceder, aventajar, superar.',
+                'Transferir o trasladar algo de una persona a otra.',
+                'Sufrir, padecer, tolerar.',
+                'Llevar algo por encima de otra cosa, de modo que la vaya tocando.',
+                'Introducir algo por el hueco de otra cosa.',
+                'Cerner, cribar, tamizar.',
+                'Deglutir, tragar la comida o la bebida.',
+                'Estar durante un tiempo determinado en un lugar o situación.',
+                'No poner reparo, censura o tacha en algo.',
+                'Dicho del poder temporal: Dar o conceder el pase a las bulas, breves o decretos pontífizos.',
+                'Callar u omitir algo de lo que se debía decir o tratar.',
+                'Disimular o no darse por enterado de algo.',
+                'Proyectar una película cinematográfica.'
+            ]
+        },
+        {
+            word: 'viejo',
+            definitions: [
+                'Dicho de un ser vivo: De edad avanzada.',
+                'Existente desde hace mucho tiempo o que perdura en su estado.',
+                'Que existió o tuvo lugar en el pasado.',
+                'Deslucido, estropeado por el uso.',
+                'Coloquialmente, padre o madre de una persona.'
+            ]
+        },
+        {
+            word: 'mixto',
+            definitions: [
+                'Formado por varios elementos que se mezclan para componer otro.',
+                'Dicho de un animal o vegetal: mestizo.',
+                'Cerilla.',
+                'Mezcla inflamable que se usa para los artificios incendiarios, explosivos o de iluminación.'
+            ]
+        },
+        {
+            word: 'tragar',
+            definitions: [
+                'Hacer movimientos voluntarios o involuntarios de tal modo que algo pase de la boca hacia el estómago.',
+                'Dicho de la tierra o de las aguas: Abismar lo que está en su superficie.',
+                'Comer vorazmente.',
+                'Dar fácilmente crédito a las cosas, aunque sean inverosímiles.',
+                'Soportar o disimular algo muy desagradable.',
+                'Absorber, consumir, gastar algo.',
+                'Acceder sin convicción a una propuesta.',
+                'Chocar on un obstáculo.',
+                'No hacer caso a una señal, a una obligación o a una advertencia.'
+            ]
+        },
+        {
+            word: 'mercurio',
+            definitions: [
+                'Elemento químico metálico, líquido, de color blanco y brillo plateado, muy pesado, tóxico y mal conductor del calor.'
+            ]
+        },
+        {
+            word: 'alumno',
+            definitions: [
+                'Persona que recibe enseñanza respecto de un profesor ,escuela, colegio o universidad donde estudia.',
+                'Si es de las musas, se dice que es un poeta.'
+            ]
+        },
+        {
+            word: 'sufrir',
+            definitions: [
+                'Sentir físicamente un daño, dolor, enfermedad o ccastigo.',
+                'Sentir un daño moral.',
+                'Recibir con resignación un daño moral o físico.',
+                'Sostener, resistir.',
+                'Tolerar o llevar con paciencia.',
+                'Permitir, consentir.',
+                'Satisfacer por medio de la pena.',
+                'Oprimir fuertemente con alguna herramienta adecuada la parte de una pieza de madera o de hierro opuesta a aquella en que se golpea para encajar otra, fijar un clavo o formar un roblón.',
+                'Someterse a una prueba o examen.',
+            ]
+        },
+        {
+            word: 'virgen',
+            definitions: [
+                'Persona que no ha tenido relaciones sexuales.',
+                'Persona que, conservando su castidad, la ha consagrado a una divinidad.',
+                'Madre de Dios.',
+                'Cada uno de los dos pies derechos que en los lagares y molinos de aceite guían el movimiento de la viga.',
+                'Dicho de la tierra: Que no ha sido arada o cultivada.',
+                'Dicho de una cosa: Que está en su primera entereza y no ha servido aún para aquello a que se destina.',
+                'Puro, libre de mezcla.'
+            ]
+        },
+        {
+            word: 'velo',
+            definitions: [
+                'Cortina o tela que cubre algo.',
+                'Prenda del traje femenino de calle, hecha de tul, gasa u otra tela delgada de seda o algodón, con la que solían cubrirse las mujeres algunas partes del cuerpo.',
+                'Trozo de tul, gasa etc. con que se guarnecen y adornan algunas mantillas por la parte superior.',
+                'Cosa delgada, ligera o flotante, que encubre más o menos la vista de otra.',
+                'Pretexto, disimulación o excusa con que se intenta ocultar, atenuar u osurecer la verdad.',
+                'Confusión u oscuridad del entendimiento en lo que discurre, que le estorba percibirlo enteramente u ocasiona duda.',
+                'Cosa que encubre o disimula el conocimiento expreso de otra.',
+                'Aparejo compuesto de un varal y una red que, sujeta por medio de una cuerda en uno de los extremos de aquel, se sumerge en el agua para pescar.',
+            ]
+        },
+        {
+            word: 'purificador',
+            definitions: [
+                'Que purifica.',
+                'Paño de lino con el cual se enjuga y purifica el cáliz.',
+                'Lienzo de que se sirve el sacerdote en el altar para limpiarse los dedos.'
+            ]
+        },
+        {
+            word: 'probar',
+            definitions: [
+                'Hacer examen y experimento de las cualidades de alguien o algo.',
+                'Examinar si algo está arreglado a la medida, muestra o proporción de otra cosa a que se debe ajustar.',
+                'Comer o beber algo.',
+                'Demostrar algo con razones, instrumentos o testigos.',
+                'Hacer prueba, experimentar o intentar algo.',
+                'Dicho de una cosa: ser a propósito o convenir, o producir el efecto que se necesita.'
+            ]
+        },
+        {
+            word: 'perito',
+            definitions: [
+                'Experto o entendido en algo.',
+                'Ingeniero técnico.'
+            ]
+        },
+        {
+            word: 'confidencial',
+            definitions: [
+                'Que se hace o se dice en la confianza de que se mantendrá la reserva de lo hecho o lo dicho.'
+            ]
+        },
+        {
+            word: 'pedal',
+            definitions: [
+                'Borrachera.',
+                'Palanca que acciona un mecanismo con el pie.',
+                'En algunos instrumenos, como el piano o el órgano, los dispositivos que se gobiernan con los pies y que producen sonidos o modifican la sonoridad de los del instrumento en sí.',
+                'En armonía, sonido prolongado sobre el cual se suceden diferentes acordes.'
+            ]
+        },
+        {
+            word: 'conquistar',
+            definitions: [
+                'Ganar, mediante operación de guerra, un territorio, población, posición, etc.',
+                'Ganar, conseguir algo, generalmente conb esfuerzo, habilidad o venciendo algunas dificultades.',
+                'Dicho de una persona: ganar la voluntad de otra, o traerla a su partido.',
+                'Lograr el amor de alguien, cautivar su ánimo.'
+            ]
+        },
+        {
+            word: 'candelabro',
+            definitions: [
+                'Candelero de dos o más brazos.',
+                'Planta de la familia de las cactñaceas, cuyos frutos se llaman tunas, peladas o chulas. Alcanzan mñas de seis metros de altura y se crían en provincias de Argentina y México.',
+            ]
+        },
+        {
+            word: 'conducto',
+            definitions: [
+                'Canal, comúnmente tapado, que sirve para dar paso y salida a las aguas y otras cosas.',
+                'Cada uno de los tubos o canales que, en gran número, se hallan en los cuerpos organizados para la vida y sirven a las funciones fisiológicas.',
+                'Conducción de aire o gases construida con chapa metálica u otro material.',
+                'Mediación o intervención de una persona para la solución de un negocio, la obtención de noticias, etc.',
+                'Medio o vía que se sigue en algún negocio.'
+            ]
+        },
+        {
+            word: 'ayudar',
+            definitions: [
+                'Prestar cooperación.',
+                'Auxiliar, socorrer.',
+                'Hacer un esfuerzo, poner los medios para el logro de algo.',
+                'Valerse de la cooperación o ayuda de alguien.'
+            ]
+        },
+        {
+            word: 'apagón',
+            definitions: [
+                'Interrupción pasajera del suministro de energía eléctrica.',
+                'En Cuba, dicho de un cigarro o del tabaco: Apagadizo.'
+            ]
+        },
+        {
+            word: 'guía',
+            definitions: [
+                'Alquello que dirige o encamina.',
+                'Poste o pilar grande de cantería que se coloca de trecho en trecho, a los lados de un camino de montaña, para señalar su dirección.',
+                'Tratado en que se dan preceptos para encaminar o dirigir en cosas, ya sean espiritules, abstractas o puramente mecánicas.',
+                'Lista impresa de datos o noticias referentes a una determinada materia.',
+                'Despacho que lleva consigo quien transporta algunos géneros, para que no se los detengan ni decomisen.',
+                'Mecha delgada con pólvora y cubierta con papel, que sirve para dar fuego a los barrenos, y en los fuegos artificiales para guiarlos adonde se desee.',
+                'Sarmiento o vara que se deja en las cepas y en los árboles para dirigirlos.',
+                'Tallo principal de las coníferas y otros árboles.',
+                'Palanca que sale oblicuamente de lo alto del eje de una noria para enganchar en ella la caballería, o del de un molino de viento para orientarlo.',
+                'Volante de un automóvil.',
+                'Caballería que, sola o apareada con otra, va delante de todas en un tiro fuera del tronco.',
+                'Persona que encamina, conduce y enseña a otra el camino.',
+                'Manillar de la bicicleta.'
+            ]
+        },
+        {
+            word: 'parte',
+            definitions: [
+                'Porción de un todo.',
+                'Cantidad o porción especial o determinada de un compuesto.',
+                'Sitio, lugar.',
+                'Porción que le corresponde a alguien en cualquier reparto o distribución.',
+                'Cada una de las divisiones principales que suele haber en una obra científica, literaria o musical.',
+                'En ciertos géneros literarios, obra entera, pero relacionada con otra u otras que reciben el mismo nombre.',
+                'Cada una de las personas o grupos de ellas que contiendan, discuten o dialogan.',
+                'Lado a que alguien se inclina o se opone en cuestión, riña o pendencia.',
+                'Persona o entidad que litiga en un pleito.',
+                'Escrito, ordinariamente breve, que por cualquier medio se envía a alguien para comunicarle algo.'
+            ]
+        },
+        {
+            word: 'soltero',
+            definitions: [
+                'Que no se ha casado.',
+                'Suelto o libre.'
+            ]
+        },
+        {
+            word: 'leer',
+            definitions: [
+                'Pasar la vista por lo escrito o impreso comprendiendo la significación de los caracteres empleados.',
+                'Comprender el sentodo de cualquier tipo de representación gráfica.',
+                'Entender o interpretar un texto de determinado modo.',
+                'En las oposiciones y otros ejercicios literarios, decir en público el discurso llamado lección.',
+                'Descubir por indicios los sentimientos o pensamientos de alguien, o algo oculto que ha hecho o le ha sucedido.',
+                'Adivinar algo oculto mediante prácticas esotéricas.',
+                'Descifrar un código de signos supersticiosos para adivinar algo oculto.',
+            ],
+        },
+        {
+            word: 'marioneta',
+            definitions: [
+                'Títere, muñeco movido por hilos u otro procedimiento.',
+                'Persona que se deja manejar.'
+            ]
+        },
+        {
+            word: 'tambor',
+            definitions: [
+                'Instrumento musical de percusión, de madera o metal, cilíndrico, hueco, cubierto por sus dos bases con piel estirada, que se toca con dos palillos.',
+                'Tamiz por donde pasan el azúcar los reposteros.',
+                'Cilindro giratorio de hierro, hueco y cerrado, que sirve para tostar café, cacao, etc.',
+                'Aro de madera sobre el cual se tiende una tela para bordarla.',
+                'Cilindro giratorio donde van las cápsulas de un revólver.',
+                'Mecanismo que sirve para enrollar un cable y cuya rotación permite tirar de él.',
+                'Cilindro metálico, hueco y giratorio de una lavadora, en el que se introduce la ropa.'
+            ]
+        },
+        {
+            word: 'buey',
+            definitions: [
+                'Macho vacuno castrado.',
+                'Medida hidráulica aproximada que se usa en algunas localidades para apreciar el volumen de agua que pasa por una acequia o brota de un manantial cuando es en gran cantidad.',
+                'Golpe de mar que entra por una porta, desfondada por efecto del mismo golpe o abierta por descuido.',
+                'Golpe o caudal muy grueso de agua que sale por un encañado, canal o nacimiento.'
+            ]
+        },
+        {
+            word: 'pico',
+            definitions: [
+                'Parte saliente de la cabeza de las aves, compuesto por dos piezas córneas, una superior y otra inferior, que suelen terminar en unta y les sirven para tomar el alimento.',
+                'Parte puntiaguda que sobresale en la superficie o en el borde o límite de alguna cosa.',
+                'Herramienta de cantero, con dos puntas opuestas aguzadas y enastada en un mango largo de madera, que se emplea principalmente para desbastar la piedra.',
+                'Cúspide aguda de una montaña.',
+                'Montaña de cumbre puntiaguda.',
+                'Pañal triangular de niños, generalmente de tejido afelpado.',
+                'Parte pequeña en que una cantidad excede a un número redondo.',
+                'Cantidad indeterminada de dinero.',
+                'Pinza de las patas delanteras de los crustáceos.',
+                'Punta o porción de ganado.',
+                'Beso superficial en los labios.',
+                'Boca de una persona.',
+                'Facundia, expedición y facilidad en el decir.',
+                'Pájaro carpintero.',
+                'Prefijo que designa una billonésima parte de una unidad de medida.'
+            ]
+        },
 
     ]
 };

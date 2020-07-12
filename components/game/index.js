@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 import styles from './game.module.scss';
 import { range, untilded } from '../../helpers'; 
 
+import WordPanel from '../../components/word-panel';
 import LetterSelector from '../letter-selector';
 import Heart from '../heart';
 
@@ -15,24 +16,27 @@ const Game = ({
     onWin,
     onLose,
 }) => {
+
+
     const [ usedLetters, setUsedLetters ] = useState([]);
     const [ lives, setLives ] = useState(_initialLives); 
     const [ isSolved, setIsSolved ] = useState(false);
     const [ solution, setSolution ] = useState(_solution);
     const [ word, setWord ] = useState(solution.replace(/[a-z]/g, '*'));
- 
+
     const updateWord = () => {
-        const updatedWord = untilded(solution).split('').reduce((w, letter) => w + (usedLetters.includes(letter) ? letter : '*'), '');
+        // const updatedWord = untilded(solution).split('').reduce((w, letter) => w + (usedLetters.includes(letter) ? letter : '*'), '');
+        const updatedWord = solution.split('').reduce((w, letter) => w + (usedLetters.includes(untilded(letter)) ? letter : '*'), '');
         setWord(updatedWord);
     }
-
+    
     const playLetter = (letter) => {
-        if (isSolved || lives <= 0 || usedLetters.includes(letter)) {
+        if (isSolved || lives <= 0 || usedLetters.includes(untilded(letter))) {
             return;
         }
         
-        setUsedLetters(usedLetters.concat(letter));
-        if (!untilded(solution).includes(letter)) {
+        setUsedLetters(usedLetters.concat(untilded(letter)));
+        if (!untilded(solution).includes(untilded(letter))) {
             setLives(lives - 1);
         }
     }
@@ -62,8 +66,6 @@ const Game = ({
         }
     }, [isSolved])
 
-    
-
     return (
         <div className={styles.game} >
             { (!isSolved && lives > 0) ? (
@@ -82,19 +84,12 @@ const Game = ({
                     </>: null }
                 </div>
             )}
-            <div className={styles.wordPanel}>
-                { word.split('').map((letter, index) => (
-                    <div className={styles.letter + (letter !== '*' ? ` ${styles.inWord}` : '')} key={index}>
-                        { letter }
-                    </div>
-                ) )}
-            </div>
+            <WordPanel word={word}/>
             <div className={styles.hudPanel}>
                 <div className={styles.lives}>
                     { range(1, _initialLives).map(i => <Heart key={i} on={ i <= lives } />)}
                 </div>
             </div>
-            
         </div>
     );
 
