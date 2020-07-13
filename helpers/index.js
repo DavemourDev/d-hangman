@@ -33,3 +33,25 @@ export function untilded(str) {
         return (tildedIndex > -1) ? NO_TILDE[tildedIndex] : char;
     }).join('');
 }
+
+export function calculateTimeMultiplier(time_ms) {
+    const time_s = 60 - Math.round(time_ms / 1000);
+    if (time_s > 55) {
+        return 4;
+    } else if (time_s > 50) {
+        return 3;
+    } else if (time_s > 40) {
+        return 2;
+    } else {
+        return 1;
+    }
+}
+
+export function calculateLivesBonus(lives) {
+    return lives === 5 ? lives * 2 : Math.max(lives, 0); 
+}
+
+export function showTimeInMMSS(time_ms) {
+    const time_s = Math.round(time_ms / 1000); 
+    return `${Math.trunc(time_s / 60)}:${(time_s % 60).toString(10).padStart(2, '0')}`;
+}

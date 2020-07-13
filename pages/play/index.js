@@ -7,9 +7,8 @@ import {useState, useEffect} from 'react';
 import data from '../../data/words';
 
 import Game from '../../components/game';
-import Timer from '../../components/timer';
 
-import { randomElement } from '../../helpers';
+import { randomElement, calculateLivesBonus, calculateTimeMultiplier, showTimeInMMSS } from '../../helpers';
 
 const PlayPage = ({words}) => {
   
@@ -40,18 +39,10 @@ const PlayPage = ({words}) => {
   
   const [ timeActivated, setTimeActivated ] = useState(true);
 
-  /**
-   * Paso del tiempo del temporizador.
-   */
-  const tickHandler = (period) => {
-    setTime(time + period);
-  };
-
-
   useEffect(() => {
       // TIME EVENTS HERE
-    // console.log(time);
-  }, [time])
+      timeActivated && setTimeout(() => setTime(time + PERIOD), PERIOD);
+  }, [time, timeActivated])
 
 
   /**
@@ -62,6 +53,7 @@ const PlayPage = ({words}) => {
     setGameSolution(word);
     setHint(randomElement(definitions));
     setTime(0);
+    setTimeActivated(true);
     return word;
   };
 
@@ -72,13 +64,20 @@ const PlayPage = ({words}) => {
     replayHandler();
   }
 
+  const pauseToggle = () => {
+    setTimeActivated(!timeActivated);
+  }
+
   /**
    * Se llama al ganar una partida
    * 
    * @param {number} gainedScore Puntuación ganada al ganar la partida
    */
   const winHandler = (gainedScore) => {
-    setScore(score + gainedScore);
+    setTimeActivated(false);
+    const timeMultiplier = calculateTimeMultiplier(time);
+    const livesBonus = calculateLivesBonus(gainedScore); 
+    setScore(score + timeMultiplier * livesBonus );
   }
 
 
@@ -99,12 +98,15 @@ const PlayPage = ({words}) => {
           <h1>Hangman</h1>
           <h2>Modo clásico</h2>
         </hgroup>
-        <div>
-          <p><strong>Puntuación:</strong> { score }</p>
-        
+        <div className={styles.stats}>
+          <p><strong>✨</strong> { score }</p>
+          <p><strong>🕒</strong> { showTimeInMMSS(time) }</p>
         </div>
 
       </header>
+      <div className={styles.buttonGroup}>
+          <button onClick={ pauseToggle }>{timeActivated ? "⏸️" : "▶️"}</button>
+      </div>
       <p className={styles.hint}>{ hint }</p>
       <Game 
           solution={ gameSolution } 
@@ -113,18 +115,16 @@ const PlayPage = ({words}) => {
           onLose={ loseHandler }
           onReplay={ nextWordHandler } 
           onNextWord={ replayHandler }
+          active={ timeActivated }
       />
 
-      <Timer
-        period={ PERIOD } 
-        onTick={ tickHandler }
-        activated={ timeActivated }
-      />
+
     </Layout>
   )
 };
 
 /*
+
 export const getWords = async () => {
   // const API_URL = 'http://localhost:3000/api/'; // dev
   const API_URL = 'https://d-hangman.herokuapp.com/api/'; // prod

@@ -9,20 +9,53 @@
 
 .header {
 
+    .stats {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+    
     @media screen and (max-width: 482px) {
-
+        
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
         background-color: #efefff;
         padding: 1rem;
-
+        
         h1, h2 {
             padding: 0;
+            font-size: 1.15rem;
+        }
+        
+        .stats {
             font-size: 1rem;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+            p {
+                margin: 0.5rem;
+            }
         }
     }    
+    
+}
+
+.buttonGroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        border: none;
+        font-size: 1.5rem;
+        padding: 0;
+        background: none;
+    }
 }
 
 .hint {

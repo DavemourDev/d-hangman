@@ -15,6 +15,7 @@ const Game = ({
     lives: _initialLives,
     onWin,
     onLose,
+    active
 }) => {
 
 
@@ -68,7 +69,7 @@ const Game = ({
 
     return (
         <div className={styles.game} >
-            { (!isSolved && lives > 0) ? (
+            { (!isSolved && lives > 0 && active) ? (
                 <LetterSelector onPickLetter={ playLetter } disabledLetters={ usedLetters }/>
             ) : (
                 <div className={ styles.endPanel + ' ' + (isSolved ? styles.win : ( (lives <= 0) ? styles.lose : ''))}>
