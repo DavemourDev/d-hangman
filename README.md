@@ -18,3 +18,28 @@ Si el jugador adivina la palabra, se le permitirá continuar jugando, y obtendr�
 - Más animaciones.
 - Se irá añadiendo periódicamente más vocabulario con cada actualización.
 - Modos de juego alternativos.
+
+
+# Versiones
+
+## 0.1.0
+
+Versión inicial. Mecánicas básicas de juego.
+
+## 0.2.0
+
+- Añadidas mecánicas de tiempo y de cálculo de puntuación por racha de aciertos y complejidad de palabra al juego clásico.
+
+- Resueltos problemas originados por las tildes al realizar comparaciones.
+
+- Interfaz más responsiva.
+
+- Añadidas nuevas palabras en español. Las palabras se leen de un fichero. En futuras versiones se realizará conexión con una API externa para obtener las palabras.
+
+- Estructura de componentes pulida: 
+  
+  - Flujo de juego orientado a eventos.
+  
+  - El componente de juego queda abstraído de las mecánicas de puntuación, vidas, tiempo y del comportamiento al finalizar la partida.
+  
+  - Interfaz de juego segregada del juego en sí.

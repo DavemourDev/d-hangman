@@ -1,24 +1,45 @@
 import Head from 'next/head'
 import Layout from '../../components/layout';
-
 import styles from '../../components/pages-css/play-page.module.scss'; 
+import LivesPanel from '../../components/lives-panel';
 
 import {useState, useEffect} from 'react';
+
+
 import data from '../../data/words';
 
 import Game from '../../components/game';
+import EndGamePanel from '../../components/end-game-panel';
 
 import { randomElement, calculateLivesBonus, calculateTimeMultiplier, showTimeInMMSS } from '../../helpers';
 
 const PlayPage = ({words}) => {
   
+  /**
+   * Límite de puntuación obtenible por racha de letras no fallidas
+   */
+  const MAX_CONSECUTIVE_ASSERT_BONUS = 5;
+
+  /**
+   * Número de vidas con las que se empieza la partida.
+   */
+  const INITIAL_LIVES = 5;
+
+  /**
+   * Tiempo en milisegundos entre cada paso del reloj
+   */
   const PERIOD = 100;
   
   // Obtener una palabra aleatoria
   const { word: _word, definitions: _definitions } = randomElement(words);
 
   /**
-   * Tiempo de partida
+   * Número de vidas de partida.
+   */
+  const [ lives, setLives ] = useState(5);
+
+  /**
+   * Tiempo de partida.
    */
   const [ time, setTime ] = useState(0);
 
@@ -39,11 +60,45 @@ const PlayPage = ({words}) => {
   
   const [ timeActivated, setTimeActivated ] = useState(true);
 
+  const [ won, setIsWon ] = useState(false);
+  const [ lost, setIsLost ] = useState(false);
+
+  const [ consecutiveAssertBonus, setConsecutiveAssertBonus ] = useState(1);
+
+  /**
+   * Al moverse el temporizador, detenerse o reanudarse...
+   */
   useEffect(() => {
       // TIME EVENTS HERE
       timeActivated && setTimeout(() => setTime(time + PERIOD), PERIOD);
   }, [time, timeActivated])
 
+  /**
+   * Al resolverse la palabra
+   */
+  useEffect(() => {
+    if (won) {
+        winHandler();
+    }
+  }, [won])
+
+  useEffect(() => {
+    if (lives <= 0) {
+        loseHandler();
+    }
+  }, [lives]);
+
+  /**
+   * Se llama al fallar una letra.
+   */
+  const missHandler = () => {
+    setLives(lives - 1);
+    setConsecutiveAssertBonus(1);
+  }
+
+  const solveHandler = () => {
+    setIsWon(true);
+  }
 
   /**
    * Se llama al escoger rejugar partida.
@@ -54,8 +109,20 @@ const PlayPage = ({words}) => {
     setHint(randomElement(definitions));
     setTime(0);
     setTimeActivated(true);
+    setIsWon(false);
+    setIsLost(false);
+    setLives(INITIAL_LIVES);
     return word;
   };
+
+  /**
+   * Se llama al acertar una letra de la palabra
+   * @param {number} num Número de ocurrencias de la letra dentro de la palabra
+   */
+  const assertHandler = (num = 1) => {
+    setConsecutiveAssertBonus(Math.min(consecutiveAssertBonus + num, MAX_CONSECUTIVE_ASSERT_BONUS));
+    setScore(score + consecutiveAssertBonus);
+  }
 
   /**
    * Se llama al accionar el evento de siguiente palabra
@@ -64,6 +131,9 @@ const PlayPage = ({words}) => {
     replayHandler();
   }
 
+  /**
+   * Se llama al pulsar el botón de pausa.
+   */
   const pauseToggle = () => {
     setTimeActivated(!timeActivated);
   }
@@ -73,26 +143,26 @@ const PlayPage = ({words}) => {
    * 
    * @param {number} gainedScore Puntuación ganada al ganar la partida
    */
-  const winHandler = (gainedScore) => {
+  const winHandler = () => {
     setTimeActivated(false);
+    setIsWon(true);
     const timeMultiplier = calculateTimeMultiplier(time);
-    const livesBonus = calculateLivesBonus(gainedScore); 
-    setScore(score + timeMultiplier * livesBonus );
+    const livesBonus = calculateLivesBonus(lives); 
+    const wordLength = gameSolution.length;
+    const winScore = timeMultiplier * (livesBonus + wordLength);
+    setScore(score + winScore );
   }
-
 
   /**
    * Se llama al perder una partida
    */
-  const loseHandler = () => {}
+  const loseHandler = () => {
+    setIsLost(true);
+    setTimeActivated(false);
+  }
 
   return (
-    <Layout>
-      <Head>
-        <title>Hangman - Modo clásico</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-      </Head>
-      
+    <Layout title='Hangman - Modo clásico'>
       <header className={styles.header}>
         <hgroup>
           <h1>Hangman</h1>
@@ -102,36 +172,41 @@ const PlayPage = ({words}) => {
           <p><strong>✨</strong> { score }</p>
           <p><strong>🕒</strong> { showTimeInMMSS(time) }</p>
         </div>
-
       </header>
-      <div className={styles.buttonGroup}>
-          <button onClick={ pauseToggle }>{timeActivated ? "⏸️" : "▶️"}</button>
-      </div>
-      <p className={styles.hint}>{ hint }</p>
+      { (!won && !lost) ? (
+        <>
+        <div className={styles.buttonGroup}>
+            <button onClick={ pauseToggle }>{timeActivated ? "⏸️" : "▶️"}</button>
+        </div>
+        <p className={styles.hint}>{ hint }</p>
+        </>
+        ): null
+      }
       <Game 
           solution={ gameSolution } 
-          lives={ 5 } 
-          onWin={ winHandler }
-          onLose={ loseHandler }
+          lives={ lives } 
+          onSolve={ solveHandler }
+          onAssert={ assertHandler }
+          onMiss={ missHandler }
           onReplay={ nextWordHandler } 
           onNextWord={ replayHandler }
           active={ timeActivated }
       />
-
-
+      <EndGamePanel 
+          onNextWord={ nextWordHandler } 
+          won={ won }
+          lost ={ lost }
+          lives={ lives } 
+          time={ time }
+          solution={ gameSolution }
+      />
+      <LivesPanel 
+          currentLives={ lives } 
+          maxLives={ INITIAL_LIVES } 
+      />
     </Layout>
   )
 };
-
-/*
-
-export const getWords = async () => {
-  // const API_URL = 'http://localhost:3000/api/'; // dev
-  const API_URL = 'https://d-hangman.herokuapp.com/api/'; // prod
-  const data = await fetch(API_URL + 'words');
-  return data.json();
-}
-*/
 
 /**
  * PROVISIONAL: los datos son obtenidos de un fichero

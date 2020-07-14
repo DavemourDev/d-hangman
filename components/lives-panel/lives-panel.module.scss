@@ -1,0 +1,9 @@
+.lives {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 3px ridge #444;
+    border-top: none;
+    padding: 0.25rem;
+    font-size: 2em;
+}

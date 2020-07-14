@@ -1039,7 +1039,7 @@ export default {
                 'Barra, varilla o pieza similar que atraviesa un cuerpo giratorio y le sirve de sostén en el movimiento.',
                 'Idea fundamental en un raciocinio.',
                 'Tema predominante en un escrito o discurso.',
-                'Sostñen principal de una empresa.',
+                'Sostén principal de una empresa.',
                 'Designio final de una conducta.',
                 'Persona o cosa considerada como el centro de algo, y en torno a la cual gira lo demás.',
                 'Barra horizontal dispuesta perpendicularmente a la línea de tracción de un vehículo, que soporta en sus extremos los bujes de las ruedas.',
@@ -1140,7 +1140,7 @@ export default {
                 'Comparecencia ante un juez o tribunal en la que las partes exponen los fundamentos de sus respectivas pretensiones.',
                 'En plural, regalos que recíprocamente se hacen los novios.',
                 'En plural, ventana, puerta o otra abertura en los edicios por donde entra luz para ver o se puede observar lo exterior.',
-                'Empleado de aduanas a cuyo cargo estña el control de las mercancías.'
+                'Empleado de aduanas a cuyo cargo está el control de las mercancías.'
             ]
         },
         {
@@ -1307,7 +1307,7 @@ export default {
             word: 'candelabro',
             definitions: [
                 'Candelero de dos o más brazos.',
-                'Planta de la familia de las cactñaceas, cuyos frutos se llaman tunas, peladas o chulas. Alcanzan mñas de seis metros de altura y se crían en provincias de Argentina y México.',
+                'Planta de la familia de las cactáceas, cuyos frutos se llaman tunas, peladas o chulas. Alcanzan más de seis metros de altura y se crían en provincias de Argentina y México.',
             ]
         },
         {

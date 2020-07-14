@@ -55,3 +55,14 @@ export function showTimeInMMSS(time_ms) {
     const time_s = Math.round(time_ms / 1000); 
     return `${Math.trunc(time_s / 60)}:${(time_s % 60).toString(10).padStart(2, '0')}`;
 }
+
+
+/**
+ * Determina si una palabra contiene una letra, sin tener en cuenta si ésta tiene tilde o no.
+ * 
+ * @param {string} word 
+ * @param {string} letter 
+ */
+export function wordIncludesLetter(word, letter) {
+    return untilded(word).includes(untilded(letter))
+} 

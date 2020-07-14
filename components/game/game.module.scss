@@ -12,37 +12,5 @@
 }
 
 
-.lives {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    border: 3px ridge #444;
-    border-top: none;
-    padding: 0.25rem;
-    font-size: 2em;
-}
 
-.endPanel {
 
-    text-align: center;
-    height: 1px;
-    border: 1px solid rgba(0,0,0,0);
-    transition: ease 1s height;
-    background-color: rgba(120, 120, 120, 0);
-    padding: 1rem;
-    animation: endGame 1s reverse;
-
-    &.win {
-        height: auto;
-        animation: endGame 0.75s;
-        border: 3px ridge rgba(150,150,150,0);
-        background-color: rgba(120, 240, 120, 0.5);
-    }
-
-    &.lose {
-        height: auto;
-        animation: endGame 0.75s;
-        border: 3px ridge rgba(150,150,150,0);
-        background-color: rgba(240, 120, 120, 0.5);
-    }
-}

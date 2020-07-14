@@ -1,0 +1,37 @@
+.endPanel {
+
+    text-align: center;
+    height: 1px;
+    border: 1px solid rgba(0,0,0,1);
+    transition: ease 1s height;
+    background-color: rgba(120, 120, 120, 0);
+    padding: 1rem;
+    animation: endGame 1s reverse;
+
+    &:not(.win):not(.lose) {
+        display: none;
+    }
+
+    &.win {
+        height: auto;
+        animation: endGame 0.75s;
+        border: 3px ridge rgba(150,150,150,0);
+        background-color: rgba(120, 240, 120, 0.5);
+    }
+
+    &.lose {
+        height: auto;
+        animation: endGame 0.75s;
+        border: 3px ridge rgba(150,150,150,0);
+        background-color: rgba(240, 120, 120, 0.5);
+    }
+
+    .resultTable {
+        margin: auto;
+        text-align: left;
+
+        tbody {
+            border-bottom: 1px solid #000;
+        }
+    }
+}
