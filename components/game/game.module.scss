@@ -1,16 +1,6 @@
+@import 'scss/variables';
+@import 'scss/animations';
 
+.game {
 
-@keyframes endGame {
-    0% {
-        height: 0;
-        transform: scaleY(0);
-    }
-    100% {
-        height: auto;
-        transform: scaleY(1);
-    }
 }
-
-
-
-

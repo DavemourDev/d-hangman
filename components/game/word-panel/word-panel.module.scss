@@ -1,0 +1,69 @@
+@import 'scss/variables';
+@import 'scss/animations';
+
+
+.wordPanel {
+    @include flex-center(row);
+
+    max-width: 100%;
+
+    .letter {
+        transition: ease 1s all;
+        transform: translate(0, 0);
+    }
+
+
+    &.solved {
+        
+        width: 100%;
+        background-color: $white;
+
+        .letter {
+            transform: translate(0, -2.25rem);
+            border: none;
+            background-color: none;
+            text-transform: capitalize;
+            font-size: 2em;
+            padding: 0.1em;
+            z-index: 4; 
+        }
+    }
+
+    &:not(.solved) {
+
+        .letter {
+            @include flex-center(row);
+            
+            box-shadow: 3px 3px 3px rgba($gray, 0.4);
+    
+            border: 1px ridge $gray;
+            border-radius: 5px;
+            font-variant: small-caps;
+            margin: 0.25rem 0.1rem;
+            background-color: rgba($white, 1);;
+            width: 1.0rem;
+            height: 1.25rem;
+            padding: 1em 0.75em;
+            font-weight: bold;
+            
+            animation: lettersAppear 0.4s, letterStatic ease-in-out 3.5s 0.4s infinite;
+    
+            &.inWord {
+                animation: letterInWord 0.4s, letterStaticInWord 2s 0.4s infinite alternate;
+                background-color: rgba(120, 240, 120, 1);
+            }
+    
+            @media screen and (min-width: $mid-screen-min-w) {
+                margin: 0.25rem;
+                font-size: 1.5rem;
+                width: 1.5rem;
+                padding: 1rem;
+            }
+    
+        }
+    }
+
+
+
+
+}

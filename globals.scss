@@ -1,45 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+@import 'scss/variables';
+@import 'scss/animations';
+
+* {
+  box-sizing: border-box;
+  @include no-select-text;  
+}
 
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Quicksand', 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
+  font-family: 'Roboto', 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
     'Arial', sans-serif;
   margin: 0 auto;
 
-  font-size: 24px;
+  font-size: $base-font-size;
 
-  @media screen and (max-width: 482px){
+  font-size: 16px;
+
+  @media screen and (max-width: $mid-screen-min-w){
       font-size: 18px;
   }
-  
-  button {
-    border: 3px solid #000;
-    border-radius: 5px;
-    padding: 0.5rem;
-    font-family: 'Quicksand', 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
-    'Arial', sans-serif;
-    
-    background-color: rgba(150,150, 150, 0.6);
-    transition: ease 0.4s all, ease 0.01s z-index;
-    transform: scale(1);
-    cursor: pointer;
-  
-    &:hover {
-      background-color: rgba(150,150, 220, 1);
-      transform: scale(1.25);
-      z-index: 1;
-    }
-  }
-
-
 }
-
-* {
-  box-sizing: border-box;
-}
-
-
 
 h1 {
   font-size: 3rem;
@@ -48,77 +33,19 @@ h1 {
 
 h2 {
   font-size: 2.25rem;
-  color: #666;
+  color: $dark-gray;
   text-align: center;
 }
 
-.container {
-  min-height: 100vh;
-  padding: 0 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 main {
+  @include flex-center(column);
   padding: 5rem 0;
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-footer {
-  width: 100%;
-  height: 100px;
-  border-top: 1px solid #eaeaea;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-footer img {
-  margin-left: 0.5rem;
-}
-
-footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-}
-
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
-  text-align: center;
-}
-
-.description {
-  line-height: 1.5;
-  font-size: 1.5rem;
 }
 
 code {
@@ -131,13 +58,16 @@ code {
 }
 
 .grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center(column);
+  
   flex-wrap: wrap;
-
   max-width: 800px;
   margin-top: 3rem;
+
+  @media (max-width: 600) {
+    width: 100%;
+  
+  }
 }
 
 .card {
@@ -148,35 +78,89 @@ code {
   text-decoration: none;
   border: 1px solid #eaeaea;
   border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition: ease 1s all;
+
+  &:hover, &:focus, &:active {
+    @include text-and-border-color($blue);
+  }
+
+  &:not(:hover) {
+    p {
+      display: none;
+    }
+  }
+
+  h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+  }
+  
+  p {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+
 }
 
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
-}
 
-.card h3 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
-}
-
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
 
 .logo {
   height: 1em;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
+button {
+  border: 3px solid $dark-gray;
+  padding: 0.5rem;
+  font-family: 'Roboto', 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
+  'Arial', sans-serif;
+  
+  background-color: rgba($gray, 0.6);
+  transition: ease 0.4s all, ease 0.01s z-index;
+  transform: scale(1);
+  border-radius: 0;
+  
+  &:not([disabled]) {
+    
+    cursor: pointer;
+    border: 3px solid $black;
+    
+    &:hover, &.active, &.focus {
+      border-radius: 5px;
+      background-color: rgba($black, 1);
+      color: $white;
+      transform: scale(1.25);
+      z-index: 1;
+    }
+  }    
 }
 
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  label {
+    padding: 0.25rem;
+  }
+
+  input {
+
+    @include select-text;
+
+    display: block;
+    width: 100%;
+  }
+}

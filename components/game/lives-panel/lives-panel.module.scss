@@ -1,0 +1,25 @@
+@import "scss/variables";
+@import "scss/animations";
+
+
+.lives {
+    display: inline-block;
+    
+    .heart {
+        display: inline-block;
+        text-shadow: 1px 1px 0px $black;
+        font-family: sans-serif;
+    
+        &.on {
+            color: $red;
+            animation: heartOn 0.4s;
+        }
+    
+        &.off {
+            color: $black;
+            animation: heartOff 0.4s;
+            transform: scale(0.5);
+        }
+    }
+
+}

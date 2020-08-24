@@ -1,0 +1,47 @@
+@import 'scss/variables';
+@import 'scss/animations';
+
+.GameStatsPanel {
+    
+    @include flex-center(column);
+    
+    font-size: 1rem;
+    text-align: center;
+    
+    .GameStatLine {
+        
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        margin: 0.25rem;
+
+        .statKey {
+            font-size: 1.25rem;
+        }
+
+        .value {
+            animation: clickedLetter 0.4s;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        @media screen and (min-width: $mid-screen-min-w) {
+            flex-direction: column;
+        }
+    }
+
+    @media screen and (min-width: $mid-screen-min-w) {
+        flex-direction: row;
+        justify-content: space-around;
+    
+        font-size: 1.5rem;
+
+        .GameStatsLine {
+            margin: 0;
+        }
+    }
+    
+}

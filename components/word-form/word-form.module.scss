@@ -1,0 +1,53 @@
+@import 'scss/variables';
+@import 'scss/animations';
+
+.wordForm {
+    width: 100%;
+    margin: auto;
+
+    @media screen and (min-width: $mid-screen-min-w) {
+        width: 80%;
+    }
+}
+
+
+.buttonGroup {
+
+
+    display: flex;
+    
+    button {
+        width: 100%;
+    }
+
+}
+
+.definitionList {
+    
+    width: 100%;
+
+    h4 {
+        text-align: center;
+        margin: 0.25em;
+    }
+
+    .definition {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+}
+
+.cancelButton {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: rgba(255, 100, 100, 0.4);
+    
+
+    &:hover {
+        background-color: rgba(255, 100, 100, 0.8) !important;
+        border-color: rgba(200, 100, 100, 1);
+
+        animation: growup 0.6s linear 0s infinite alternate;
+    }
+}

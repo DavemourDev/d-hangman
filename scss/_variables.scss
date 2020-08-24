@@ -1,0 +1,52 @@
+
+$base-font-size: 24px;
+
+$white: #efefff;
+$black: #000;
+
+$yellow: #effe5f;
+
+$gray: #999;
+$light-gray: #ccc;
+$dark-gray: #555;
+
+$light-green: #afa;
+$green: #6f6;
+
+$blue: #9696dc;
+
+$red: #c55;
+$light-red: #faa;
+
+$mid-screen-min-w: 482px;
+
+@mixin no-select-text {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+@mixin select-text {
+  -webkit-touch-callout: text; /* iOS Safari */
+  -webkit-user-select: text; /* Safari */
+  -khtml-user-select: text; /* Konqueror HTML */
+  -moz-user-select: text; /* Firefox */
+  -ms-user-select: text; /* Internet Explorer/Edge */
+  user-select: text; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+@mixin flex-center($direction: row) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin text-and-border-color($color) {
+    color: $color;
+    border-color: $color;
+}
+  

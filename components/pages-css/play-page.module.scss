@@ -1,23 +1,16 @@
-@keyframes showHint {
-    from {
-        transform: scaleY(0);
-    } 
-    to {
-        transform: scaleY(1);
-    }
-}
+@import 'scss/variables';
+@import 'scss/animations';
 
 .header {
+    margin-top: 0;
+    width: 100%;
 
-    .stats {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-    }
-    
-    @media screen and (max-width: 482px) {
-        
+    @media screen and (max-width: $mid-screen-min-w) {
+        h1, h2 {
+            padding: 0;
+            font-size: 1.15rem;
+        }
+
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -25,48 +18,41 @@
         background-color: #efefff;
         padding: 1rem;
         
-        h1, h2 {
-            padding: 0;
-            font-size: 1.15rem;
-        }
+
+    }
+    
+    @media screen and (min-width: $mid-screen-min-w) {
         
-        .stats {
-            font-size: 1rem;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            
-            p {
-                margin: 0.5rem;
-            }
-        }
     }    
     
 }
 
 .buttonGroup {
-    margin: 0;
-    padding: 0.5rem;
-    background: #333;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    @include flex-center(row);
 
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    
     button {
         border: none;
-        background: none;
         display: block;
-        font-size: 1.5rem;
-        padding: 0;
+        color: $white;
     }
 }
 
 .hint {
-    margin: 0;
-    background-color: #ddf;
+
+
+    margin: 1rem 0;
+    border-radius: 5px;
+    background-color: $white;
+    border: solid 1px $light-gray;
+    box-shadow: 3px 3px 3px rgba($gray, 0.4);
+    width: 100%;
+
     padding: 0.5rem;
     line-height: 1.5rem;
     text-align: center;
-    animation: showHint 0.4s;
+    animation: showVertical 0.4s;
 }

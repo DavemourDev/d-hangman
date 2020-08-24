@@ -1,0 +1,48 @@
+@import 'scss/variables';
+@import 'scss/animations';
+
+.wordsList {
+
+    background: $light-gray;
+    padding: 0.5rem;
+    border: 3px ridge $gray;
+    border-radius: 5px;
+
+
+    ul {
+        border: 3px ridge $gray;
+        padding: 0;
+        list-style: none;
+        text-align: center;
+
+        max-height: 40vh;
+        overflow-y: scroll;
+
+        li {
+            background: $white;
+            padding: 0.25em;
+            transform: scale(1);
+
+            transition: ease 0.4s all;
+
+            &.selected, &:hover {
+                cursor: pointer;
+                background: $green;
+            }
+        }
+
+    }
+
+}
+
+.buttonGroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    button {
+        width: 100%;
+    }
+}

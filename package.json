@@ -9,8 +9,16 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-brands-svg-icons": "^5.14.0",
+    "@fortawesome/free-regular-svg-icons": "^5.14.0",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "axios": "^0.19.2",
+    "cors": "^2.8.5",
     "next": "9.3.5",
     "node-sass": "^4.14.1",
+    "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   }

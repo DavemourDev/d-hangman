@@ -1,0 +1,42 @@
+@import 'scss/variables';
+@import 'scss/animations';
+
+.resultTable {
+
+    margin: 0.5rem 0;
+    
+    tr {
+        background: rgba($light-gray, 0.6);
+        border-top: 1px solid rgba(black, 1);
+        border-bottom: 1px solid rgba(black, 1);    
+        
+    
+        td, th {
+            padding: 0.5em;
+        }
+
+        .data {
+            color: $gray;
+            font-weight: bold;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.25em;
+            animation: glow 1.5s infinite alternate;    
+        }
+    }
+
+    tbody {
+        border-bottom: 1px solid $black;
+        border-top: 1px solid $black;
+    }
+
+    tfoot {
+
+        th {
+            font-size: 1.25em;
+        }
+
+        .data {
+            font-size: 1.5em;
+        }
+    }
+}

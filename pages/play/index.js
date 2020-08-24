@@ -1,20 +1,43 @@
-import Head from 'next/head'
 import Layout from '../../components/layout';
-import styles from '../../components/pages-css/play-page.module.scss'; 
-import LivesPanel from '../../components/lives-panel';
 
-import {useState, useEffect} from 'react';
+import { 
+  GameState,
+  GameStatsPanel,
+  WinGamePanel,
+  LoseGamePanel,
+  LetterSelector,
+  LivesPanel,
+  TimePanel,
+} from '../../components/game';
 
+import styles from '../../components/pages-css/play-page.module.scss';
 
-import data from '../../data/words';
+import { useState, useEffect, useRef } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import Game from '../../components/game';
-import EndGamePanel from '../../components/end-game-panel';
+import { getWords } from '../../services/words';
+import { randomElement, showTimeInMMSS, shuffleArray, processGameResult } from '../../helpers';
 
-import { randomElement, calculateLivesBonus, calculateTimeMultiplier, showTimeInMMSS } from '../../helpers';
-
+/**
+ * Página del modo clásico de juego.
+ * 
+ * @param {Object} props 
+ */
 const PlayPage = ({words}) => {
   
+  /**
+   * Obtiene una palabra de la lista de palabras.
+   */
+  const takeAWord = () => {
+    console.log("Getting word...")
+    return words.shift();
+  }
+
+  /**
+   * Referencia al estado de juego actual
+   */
+  const gameRef = useRef();
+
   /**
    * Límite de puntuación obtenible por racha de letras no fallidas
    */
@@ -30,8 +53,6 @@ const PlayPage = ({words}) => {
    */
   const PERIOD = 100;
   
-  // Obtener una palabra aleatoria
-  const { word: _word, definitions: _definitions } = randomElement(words);
 
   /**
    * Número de vidas de partida.
@@ -46,7 +67,7 @@ const PlayPage = ({words}) => {
   /**
    * Palabra solución de la partida
    */
-  const [ gameSolution, setGameSolution ] = useState(_word);
+  const [ gameSolution, setGameSolution ] = useState('');
 
   /**
    * Puntuación de la partida
@@ -56,37 +77,72 @@ const PlayPage = ({words}) => {
   /**
    * Pista dada al jugador para que adivine la palabra oculta.
    */
-  const [ hint, setHint ] = useState(randomElement(_definitions));
+  const [ hint, setHint ] = useState('');
   
-  const [ timeActivated, setTimeActivated ] = useState(true);
+  /**
+   * Determina si el temporizador se encuentra activo.
+   */
+  const [ timeActivated, setTimeActivated ] = useState(false);
 
+  /**
+   * Determina si el juego ha sido ganado.
+   */
   const [ won, setIsWon ] = useState(false);
+
+  /**
+   * Determina si el juego ha sido perdido.
+   */
   const [ lost, setIsLost ] = useState(false);
 
+  /**
+   * Determina el número de aciertos consecutivos en el momento.
+   */
   const [ consecutiveAssertBonus, setConsecutiveAssertBonus ] = useState(1);
+
+  /**
+   * 
+   */
+  const [ resultLines, setResultLines ] = useState([]);
+  
+  /**
+   * 
+   */
+  const [ resultFooter, setResultFooter ] = useState([]);
+
+  /**
+   * Al cambiar la palabra solución de la partida...
+   */
+  useEffect(() => {
+    // Esta comprobación se hace para evitar que actualice la palabra con cada cambio de estado,
+    // consumiendo una palabra solamente en caso de que no se haya provisto ninguna o se haya provisto
+    // una palabra "vacía" por error.
+    if (!gameSolution) {
+      const { word, definitions } = takeAWord();
+      setGameSolution(word);
+      setHint(randomElement(definitions));
+    }
+  }, [ gameSolution ]);
 
   /**
    * Al moverse el temporizador, detenerse o reanudarse...
    */
   useEffect(() => {
       // TIME EVENTS HERE
-      timeActivated && setTimeout(() => setTime(time + PERIOD), PERIOD);
+      if (timeActivated) {
+        setTimeout(() => setTime(time + PERIOD), PERIOD);
+      } 
   }, [time, timeActivated])
 
   /**
    * Al resolverse la palabra
    */
   useEffect(() => {
-    if (won) {
+    
+    if (timeActivated && won) {
         winHandler();
     }
+    
   }, [won])
-
-  useEffect(() => {
-    if (lives <= 0) {
-        loseHandler();
-    }
-  }, [lives]);
 
   /**
    * Se llama al fallar una letra.
@@ -96,6 +152,9 @@ const PlayPage = ({words}) => {
     setConsecutiveAssertBonus(1);
   }
 
+  /**
+   * Se llama al resolverse la palabra.
+   */
   const solveHandler = () => {
     setIsWon(true);
   }
@@ -104,7 +163,9 @@ const PlayPage = ({words}) => {
    * Se llama al escoger rejugar partida.
    */
   const replayHandler = () => {
-    const { word, definitions } = randomElement(words);
+
+    console.log("Replay");
+    const { word, definitions } = takeAWord();
     setGameSolution(word);
     setHint(randomElement(definitions));
     setTime(0);
@@ -124,12 +185,6 @@ const PlayPage = ({words}) => {
     setScore(score + consecutiveAssertBonus);
   }
 
-  /**
-   * Se llama al accionar el evento de siguiente palabra
-   */
-  const nextWordHandler = () => {
-    replayHandler();
-  }
 
   /**
    * Se llama al pulsar el botón de pausa.
@@ -146,11 +201,17 @@ const PlayPage = ({words}) => {
   const winHandler = () => {
     setTimeActivated(false);
     setIsWon(true);
-    const timeMultiplier = calculateTimeMultiplier(time);
-    const livesBonus = calculateLivesBonus(lives); 
-    const wordLength = gameSolution.length;
-    const winScore = timeMultiplier * (livesBonus + wordLength);
-    setScore(score + winScore );
+
+    const gameResult = processGameResult({ 
+      time, 
+      gameSolution, 
+      lives, 
+      maxLives: INITIAL_LIVES
+    });
+
+    setResultLines(gameResult.slice(0, -1));
+    setResultFooter(gameResult[gameResult.length - 1]);
+    setScore(score + gameResult[gameResult.length - 1][1]);
   }
 
   /**
@@ -161,65 +222,70 @@ const PlayPage = ({words}) => {
     setTimeActivated(false);
   }
 
+  /** 
+  * Paneles de estado de juego que se muestran en la HUD.
+  */
+  const GAME_STATS = {
+    "Puntuación": score,
+    "Tiempo": <TimePanel formatFunction={ showTimeInMMSS } timeMS={ time } ascendent={ true } />,
+    "Vidas": <LivesPanel currentLives={ lives } maxLives={ INITIAL_LIVES } onNoLives={ loseHandler } />
+  }; 
+
   return (
-    <Layout title='Hangman - Modo clásico'>
+    <Layout title='D-Hangman - Modo clásico'>
       <header className={styles.header}>
         <hgroup>
-          <h1>Hangman</h1>
+          <h1>D-Hangman</h1>
           <h2>Modo clásico</h2>
+          { (!won && !lost) ? (
+              <div className={styles.buttonGroup}>
+                <button onClick={ pauseToggle }>
+                  <FontAwesomeIcon icon={ timeActivated ? "pause" : "play" } />
+                </button>
+              </div>
+            ) : null
+          }
         </hgroup>
-        <div className={styles.stats}>
-          <p><strong>✨</strong> { score }</p>
-          <p><strong>🕒</strong> { showTimeInMMSS(time) }</p>
-        </div>
+        <GameStatsPanel stats={ GAME_STATS }/>
       </header>
-      { (!won && !lost) ? (
-        <>
-        <div className={styles.buttonGroup}>
-            <button onClick={ pauseToggle }>{timeActivated ? "⏸️" : "▶️"}</button>
-        </div>
-        <p className={styles.hint}>{ hint }</p>
-        </>
-        ): null
-      }
-      <Game 
+      <GameState 
+          ref={ gameRef }
           solution={ gameSolution } 
-          lives={ lives } 
           onSolve={ solveHandler }
           onAssert={ assertHandler }
           onMiss={ missHandler }
-          onReplay={ nextWordHandler } 
-          onNextWord={ replayHandler }
           active={ timeActivated }
       />
-      <EndGamePanel 
-          onNextWord={ nextWordHandler } 
-          won={ won }
-          lost ={ lost }
-          lives={ lives } 
-          time={ time }
-          solution={ gameSolution }
-      />
-      <LivesPanel 
-          currentLives={ lives } 
-          maxLives={ INITIAL_LIVES } 
-      />
+    
+      {
+        won ? (
+          <WinGamePanel
+            resultLines={ resultLines }
+            resultFooter={ resultFooter }
+            onNextWord={ replayHandler }
+          />
+        ) : (lost ? (
+            <LoseGamePanel solution={ gameSolution } />
+          ) : <p className={styles.hint}>{ hint }</p>
+        )
+      }
+    
+      { (timeActivated) ? (
+          <LetterSelector 
+              onPickLetter={ gameRef.current.playLetter }
+              disabledLetters={ gameRef.current.getUsedLetters() }/>
+      ) : null }
+      
     </Layout>
-  )
-};
-
-/**
- * PROVISIONAL: los datos son obtenidos de un fichero
- */
-export const getWords = async () => { 
-  return data;
+  );
 };
 
 export const getStaticProps = async () => {
-  let {words} = await getWords(); 
+  let { words } = await getWords(); 
 
+  // Antes de retornar la lista, realiza la mezcla para aleatorizar el orden de las palabras a jugar.
   return {
-    props: { words }
+    props: { words: shuffleArray(words) }
   }
 };
 

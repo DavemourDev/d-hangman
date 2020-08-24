@@ -43,3 +43,36 @@ Versión inicial. Mecánicas básicas de juego.
   - El componente de juego queda abstraído de las mecánicas de puntuación, vidas, tiempo y del comportamiento al finalizar la partida.
   
   - Interfaz de juego segregada del juego en sí.
+
+## 0.3.0
+
+- Ahora la interfaz y los datos de la aplicación están completamente desacoplados.
+
+  - Añadida conectividad con API REST para el tratamiento de datos.
+
+- Añadido panel de administración.
+
+  - El panel de administración no es usable ni visible por los jugadores. No obstante, compone las bases para implementar nuevos modos de juego.
+
+- Rediseño visual de la interfaz, ahora el juego se ve más pulido e interactivo.
+
+- Modificado modo clásico:
+
+  - Actualización en factores y fórmulas de obtención de puntos:
+    
+    - Arreglados fallos de coherencia en el cálculo de puntos y el resumen de la partida: Debido a pequeños errores antes no eran como debían.
+
+    - El cálculo de la puntuación base por palabra ha sido modificado, ahora se calcula a razón de la longitud de la palabra y del número de letras diferentes que la componen.
+
+    - El tiempo exigido para obtener el máximo multiplicador por tiempo ha sido ampliado a razón de la palabra en juego, haciendo el juego más justo.
+    
+      - Asimismo, por equilibrio, se han reducido los multiplicadores de puntuación por tiempo (el máximo pasa de 4 a 2 y los otros se reducen en consecuencia).
+
+    - El multiplicador por no fallar ha sido reducido de 2 a 1.5.
+
+  - Se ha resuelto un bug que posibilitaba obtener la misma palabra dos veces seguidas:
+
+    - Esto provocaba problemas en la actualización de estado de la interfaz, rompiendo el juego.
+    
+    - El algoritmo para obtener palabras ha sido modificado de tal forma que ya no es posible obtener palabras duplicadas en una misma sesión de juego.
+

@@ -1,0 +1,44 @@
+@import 'scss/animations';
+@import 'scss/variables';
+
+.letterSelector {
+
+    display: grid;
+    grid-template-columns: repeat(7, 20fr);
+    grid-template-rows: 20fr;
+
+    width: 100%;
+
+    $scale-variation: 0.25;
+
+    @media screen and (min-width: $mid-screen-min-w) {
+        @include flex-center(row);
+    }
+
+    .letter {
+
+        font-family: "Roboto Mono", monospace;
+        font-size: 1.75rem;
+        border: 1px solid rgba($black, 0);
+        background: none;
+        transition: ease 0.4s all;
+        text-shadow: 1px 1px 1px rgba($gray, 0.25);
+
+
+        &:not([disabled]):hover {
+            transform: scale(1 + scale-variation);
+            color: $green;
+            text-shadow: 1px 1px 1px rgba($gray, 0.6);
+        }
+
+        &:disabled {
+            animation: clickedLetter 0.25s;
+            transform: scale(1 - $scale-variation)
+        }
+
+        @media screen and (min-width: $mid-screen-min-w) {
+            font-size: 1.5rem;
+        }
+
+    }
+}

@@ -1,0 +1,40 @@
+@import "scss/variables";
+@import 'scss/animations'; 
+
+.endPanel {
+
+    @include flex-center(column);
+
+    z-index: 2;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+
+    text-align: center;
+    height: 1px;
+    transition: ease 1s height;
+    background-color: rgba($gray, 0);
+    padding: 1rem;
+    animation: endGame 1s reverse;
+
+    &:not(.win):not(.lose) {
+        display: none;
+    }
+
+    &.win {
+        height: auto;
+        animation: endGame 0.75s;
+        background-color: rgba($light-green, 0.8);
+    }
+
+    &.lose {
+        height: auto;
+        animation: endGame 0.75s;
+        background-color: rgba($light-red, 0.8);
+    }
+
+  
+}
