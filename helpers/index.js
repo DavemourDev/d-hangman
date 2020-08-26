@@ -52,8 +52,6 @@ export function calculateTimeMultiplier(time_ms, word) {
 
     const wordLengthObjective = calculateWordScore(word) * OBJECTIVE_MULTIPLIER; 
 
-    console.log({ time_ms, wordLengthObjective })
-
     if (time_ms < wordLengthObjective * 2) {
         return 2;
     } else if (time_ms < wordLengthObjective * 3) {
@@ -140,8 +138,6 @@ export function shuffleArray(arr) {
  * Determina las líneas de resultado dadas para el resumen de la partida
  */
 export function processGameResult({ time, gameSolution, lives, maxLives }) {
-
-    console.log({ time, gameSolution, lives, maxLives });
 
     const livesBonus = calculateLivesScore(lives, maxLives);
     const wordScore = calculateWordScore(gameSolution);

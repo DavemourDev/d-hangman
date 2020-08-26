@@ -29,7 +29,7 @@ const PlayPage = ({words}) => {
    * Obtiene una palabra de la lista de palabras.
    */
   const takeAWord = () => {
-    console.log("Getting word...")
+    // TODO: condición alternativa en caso de que se terminen las palabras
     return words.shift();
   }
 
@@ -163,8 +163,6 @@ const PlayPage = ({words}) => {
    * Se llama al escoger rejugar partida.
    */
   const replayHandler = () => {
-
-    console.log("Replay");
     const { word, definitions } = takeAWord();
     setGameSolution(word);
     setHint(randomElement(definitions));

@@ -1,5 +1,7 @@
 import styles from './letter-selector.module.scss';
 
+import PropTypes from 'prop-types';
+
 const LetterSelector = ({onPickLetter, disabledLetters}) => {
 
     // TODO: obtener alfabeto en función del idioma
@@ -18,5 +20,11 @@ const LetterSelector = ({onPickLetter, disabledLetters}) => {
     </div>);
 
 };
+
+LetterSelector.propTypes = {
+    onPickLetter: PropTypes.func.isRequired,
+    disabledLetters: PropTypes.arrayOf(PropTypes.string)
+};
+
 
 export default LetterSelector;

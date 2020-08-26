@@ -3,6 +3,13 @@ import styles from '../end-game-panel.module.scss';
 import ResultTable from '../result-table';
 import { classList } from '../../../helpers';
 
+import PropTypes from 'prop-types';
+
+/**
+ * Panel que se muestra al jugador al completar un tablero de juego con éxito.
+ * 
+ * @param {*} props 
+ */
 const WinGamePanel = ({ resultLines, resultFooter, onNextWord }) => {
 
     return (
@@ -18,6 +25,12 @@ const WinGamePanel = ({ resultLines, resultFooter, onNextWord }) => {
         </div>
 
     );
+};
+
+WinGamePanel.propTypes = {
+    resultLines: PropTypes.arrayOf(PropTypes.array).isRequired, // TODO: Restringir array interno a dos elementos
+    resultFooter: PropTypes.array.isRequired, // TODO: Restringir a dos elementos
+    onNextWord: PropTypes.func.isRequired
 };
 
 export default WinGamePanel;

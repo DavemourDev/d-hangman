@@ -43,9 +43,9 @@ UserPanel.propTypes = {
         name: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired,
         avatar: PropTypes.string,
-        admin: PropTypes.bool.required
+        admin: PropTypes.bool.isRequired
     }),
-    onLogout: PropTypes.func
+    onLogout: PropTypes.func.isRequired
 }
 
 export default UserPanel;

@@ -37,7 +37,7 @@ const LoginForm = ({
 };
 
 LoginForm.propTypes = {
-    onSubmit: PropTypes.func,
+    onSubmit: PropTypes.func.isRequired,
 
 };
 

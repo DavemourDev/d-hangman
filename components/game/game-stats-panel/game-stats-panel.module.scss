@@ -20,7 +20,11 @@
         margin: 0.25rem;
 
         .statKey {
-            font-size: 1.25rem;
+            font-size: 1.0rem;
+            
+            @media screen and (min-width: $mid-screen-min-w) {
+                font-size: 1.25rem;
+            }
         }
 
         .value {

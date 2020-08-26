@@ -63,7 +63,7 @@ const HomePage = () => {
    */
   const loginHandler = () => {
     // TODO: Implementar 
-    console.log("Logout triggered");
+    console.log("Login triggered");
   };
 
   /**
@@ -71,7 +71,7 @@ const HomePage = () => {
    */
   const registerHandler = () => {
     // TODO: Implementar 
-    console.log("Logout triggered");
+    console.log("Register triggered");
   };
 
 

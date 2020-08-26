@@ -1,5 +1,12 @@
 import styles from './result-table.module.scss';
 
+import PropTypes from 'prop-types';
+
+/**
+ * Representa una fila de la tabla de resultados.
+ * 
+ * @param { object } props 
+ */
 const ResultTableRow = ({ leftColContent, rightColContent }) => {
     return (
         <tr className={ styles.tableRow }>
@@ -9,9 +16,13 @@ const ResultTableRow = ({ leftColContent, rightColContent }) => {
     );
 };
 
+/**
+ * Representa la tabla de resultados que se muestra al finalizar el juego. 
+ * @param {*} param0 
+ */
 const ResultTable = ({
     heading,
-    lines = [], // Debe ser un array de arrays de dos elementos cada una
+    lines = [],
     footer = []
 }) => {
 
@@ -30,6 +41,12 @@ const ResultTable = ({
             </tbody>
         </table>
     )
+};
+
+ResultTable.propTypes = {
+    heading: PropTypes.string.isRequired,
+    lines: PropTypes.arrayOf(PropTypes.array).isRequired, // TODO: Restringir array interno a dos elementos
+    footer: PropTypes.array.isRequired, // TODO: Restringir a dos elementos
 };
 
 export default ResultTable;

@@ -11,14 +11,20 @@
     }
 
     .background {
-        background-color: green;
-        position: absolute;
+        position: fixed;
+        background-color: $light-gray;
+        background-clip: border-box;
+        background-repeat: no-repeat;
         width: 100%;
-        height: 100%;
         background-image: url("../../public/img/hangman-bg.jpg");
         z-index: -1;
-        opacity: 0.1;
-        background-clip: cover;
+        opacity: 0.25;
+        height: auto;
+        
+        @media screen and (max-width: $mid-screen-min-w) {
+            background-position-y: center;
+            height: 100%;
+        }
     }
 
     .container {

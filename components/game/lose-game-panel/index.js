@@ -4,6 +4,8 @@ import { classList } from '../../../helpers';
 
 import Link from 'next/link';
 
+import PropTypes from 'prop-types';
+
 const LoseGamePanel = ({ solution }) => {
     return (
         <div className={ classList(styles.endPanel, styles.lose) }>
@@ -15,5 +17,10 @@ const LoseGamePanel = ({ solution }) => {
         </div>
     );
 };
+
+LoseGamePanel.propTypes = {
+    solution: PropTypes.string.isRequired
+};
+
 
 export default LoseGamePanel;

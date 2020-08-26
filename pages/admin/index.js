@@ -34,22 +34,18 @@ const AdminPage = ({ words }) => {
         // Al modificar la palabra...
         if (word && word !== word.toLowerCase()) {
             setWord(word.toLowerCase());
-            console.log("WORD CHANGED: ", word);
         }
 
     }, [ word ]);
 
     useEffect(() => {
         // Al modificar las definiciones...
-        console.log("DEFINITIONS CHANGED: ", definitions);
     }, [ definitions ])
 
     const submitHandler = async (event) => {
         event.preventDefault();
-        console.log("SUBMIT WORD EVENT ", event);
         const wordObject = { word, definitions };
         const index = data.findIndex(w => w.word === wordObject.word);
-        console.log({ index });
         data[index] = wordObject;
         
         try {
@@ -68,18 +64,13 @@ const AdminPage = ({ words }) => {
     };
 
     const changeDefinitionHandler = (event, id) => {
-        console.log("CHANGE DEFINITION EVENT ", event);
-        console.log("ID: ", id);
         const newDefinition = event.target.value;
-        console.log("NEW DEFINITION: ", newDefinition)
         const _definitions = [ ...definitions ];
         _definitions[id] = newDefinition;
-        console.log("TO SET TO DEFINITIONS: ", _definitions)
         setDefinitions(_definitions.map(d => d ? d :''));
     }
 
     const deleteDefinitionHandler = (event, id) => {
-        console.log("DELETE DEFINITION EVENT ", event);
         const _definitions = [ ...definitions ];
         // Eliminar el elemento con la ID dada
         _definitions.splice(id, 1)
@@ -88,13 +79,10 @@ const AdminPage = ({ words }) => {
 
 
     const addDefinitionHandler = (event) => {
-        console.log("ADD DEFINITION EVENT ", event);
         setDefinitions([...definitions, ""]);
-        console.log(definitions);
     };
 
     const selectWordHandler = (event, wordEntry) => {
-        console.log("SELECT WORD EVENT ", event)
         const { word, definitions } = wordEntry;
         setWord(word);
         setDefinitions(definitions);
@@ -127,7 +115,6 @@ const AdminPage = ({ words }) => {
      */
     const reloadData = async() => {
         try {
-            console.log("Reloading data..");
             const { words } = await getWords();
             setData(words);
         } catch (error) {

@@ -85,7 +85,7 @@ const GameState = forwardRef(({
      * Al actualizarse la palabra, se realiza la comprobación con la solución.
      */
     useEffect(() => {
-        setIsSolved(solution && untilded(word) === untilded(solution));
+        setIsSolved(solution != false && untilded(word) === untilded(solution));
     }, [word]);
 
     /**

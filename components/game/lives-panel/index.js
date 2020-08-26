@@ -16,7 +16,7 @@ const Heart = ({ on }) => (
 );
 
 Heart.propTypes = {
-    on: PropTypes.bool.required
+    on: PropTypes.bool.isRequired
 };
 
 /**
